@@ -1,5 +1,4 @@
 package bsu.rfe.java.group8.lab6.zhodik.var6A;
-
 import java.awt.BorderLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -18,10 +17,8 @@ public class MainFrame extends JFrame {
     private JMenuItem resumeMenuItem;
     private JMenuItem pauseMenuFastItem;
     private JMenuItem pauseMenuBigItem;
-
     // Поле, по которому прыгают мячи
     private Field field = new Field();
-
     // Конструктор главного окна приложения
     public MainFrame() {
         super("Программирование и синхронизация потоков");
@@ -32,7 +29,6 @@ public class MainFrame extends JFrame {
                 (kit.getScreenSize().height - HEIGHT)/2);
         // Устанавливаем окно развёрнутым на весь экран
         setExtendedState(MAXIMIZED_BOTH);
-
         //меню
         JMenuBar menuBar = new JMenuBar();
         setJMenuBar(menuBar);
@@ -51,7 +47,6 @@ public class MainFrame extends JFrame {
         };
         menuBar.add(ballMenu);
         ballMenu.add(addBallAction);
-
         JMenu controlMenu = new JMenu("Управление");
         menuBar.add(controlMenu);
         Action pauseAction = new AbstractAction("Приостановить движение"){
@@ -65,7 +60,6 @@ public class MainFrame extends JFrame {
         };
         pauseMenuItem = controlMenu.add(pauseAction);
         pauseMenuItem.setEnabled(false);
-
         Action resumeAction = new AbstractAction("Возобновить движение") {
             public void actionPerformed(ActionEvent event) {
                 field.resume();
@@ -77,7 +71,6 @@ public class MainFrame extends JFrame {
         };
         resumeMenuItem = controlMenu.add(resumeAction);
         resumeMenuItem.setEnabled(false);
-
         Action pauseFastAction = new AbstractAction("Приостановить быстрые мячи") {
             public void actionPerformed(ActionEvent event) {
                 field.pauseFast();
@@ -89,7 +82,6 @@ public class MainFrame extends JFrame {
         };
         pauseMenuFastItem = controlMenu.add(pauseFastAction);
         pauseMenuFastItem.setEnabled(false);
-
         Action pauseBigAction = new AbstractAction("Приостановить большие мячи") {
             public void actionPerformed(ActionEvent event) {
                 field.pauseBig();
@@ -101,11 +93,9 @@ public class MainFrame extends JFrame {
         };
         pauseMenuBigItem = controlMenu.add(pauseBigAction);
         pauseMenuFastItem.setEnabled(false);
-
         // Добавить в центр граничной компоновки поле Field
         getContentPane().add(field, BorderLayout.CENTER);
     }
-
     public static void main(String[] args) {
 // Создать и сделать видимым главное окно приложения
         MainFrame frame = new MainFrame();

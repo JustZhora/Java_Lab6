@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-
 public class Field extends JPanel  {
     // Флаг приостановленности движения
     private boolean paused;
@@ -15,7 +14,6 @@ public class Field extends JPanel  {
     private boolean pauseBig;
     // Динамический список скачущих мячей
     private ArrayList<BouncingBall> balls = new ArrayList<BouncingBall>(10);
-
     // Класс таймер отвечает за регулярную генерацию событий ActionEvent
     // При создании его экземпляра используется анонимный класс,
     // реализующий интерфейс ActionListener
@@ -25,13 +23,11 @@ public class Field extends JPanel  {
             repaint();
         }
     });
-
     // Конструктор класса BouncingBall
     public Field() {
         setBackground(Color.WHITE);
         repaintTimer.start();
     }
-
     // Унаследованный от JPanel метод перерисовки компонента
     public void paintComponent(Graphics g) {
         // Вызвать версию метода, унаследованную от предка
@@ -42,7 +38,6 @@ public class Field extends JPanel  {
             ball.paint(canvas);
         }
     }
-
     // Метод добавления нового мяча в список
     public void addBall() {
         //Заключается в добавлении в список нового экземпляра BouncingBall
@@ -55,15 +50,12 @@ public class Field extends JPanel  {
     public synchronized void pause() {
         paused = true; //вкл пауза
     }
-
     public synchronized void pauseFast(){
         pausedFast = true; //вкл паузу быстрых мячей
     }
-
     public synchronized void pauseBig(){
         pauseBig = true;
     }
-
     // Метод синхронизированный, т.е. только один поток может одновременно быть внутри
     public synchronized void resume() {
         paused = false; //выкл пауза
@@ -72,7 +64,6 @@ public class Field extends JPanel  {
         // Будим все ожидающие продолжения потоки
         notifyAll();
     }
-
     // Синхронизированный метод проверки, может ли мяч двигаться
     public synchronized void canMove(BouncingBall ball) throws
             InterruptedException {
